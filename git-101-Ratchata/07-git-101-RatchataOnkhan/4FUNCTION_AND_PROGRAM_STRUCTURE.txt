@@ -1,0 +1,62 @@
+# FUNCTION_AND_PROGRAM_STRUCTURE
+
+**Return Values**
+- ฟังก์ชันจะต้องส่งค่ากลับ หรือไม่ก็ส่งกลับในรูปของ void
+- เมื่อโปรแกรมทำงานจนไปเจอคำสั่ง return ที่ผู้ในฟังก์ชัน การทำงานของโปรแกรมจะกลับไปทำงานต่อจากจุดที่ฟังก์ชันถูกเรียกใช้
+
+**Recursion (การเรียกซ้ำ)**
+- ฟังก์ชันสามารถเรียกใช้ตนเองได้ ซึ่งเรียกว่า recursion
+- การเรียกตนเองสามารถอยู่ในรูป direct และ indirect
+
+**C standard library**
+- printf, scanf, getchars อยู่ใน C standard library functions
+- Sqrt, exp, log -> math library function 
+- การใช้ฟังก์่นพวกนี้ต้องคอมไพล์รวมกับโค้ดไบนารี่ของฟัก์ชั่น
+- โค้ดไบนารี
+ของ C standard library functions -> /usr/ib64/libc.a
+ของ math library function -> /usr/lib64/libm.a
+lib*.a เป็นไลบารี่แบบ static 
+lib*.so เป็นไลบารี่แบบ dynamic or shared
+- gcc จะ link ใน C standard library functions ให้อัตโนมัติ
+- math library function จะไม่อัตโนมัติต้องlink ผ่าน -lm
+- การใช้ math library ต้องมี #include<math.h>
+- ค่า null เก็บใร /usr/include/stdio.h
+- มีการบอกบรรทัดที่ระบุว่า #define NULL 0
+
+
+**Global variables**
+- ประกาศอยู่นอกฟังก์ชั่น
+
+**โครงสร้างของหน่วยค.ทรงจํา**
+Text-> เก็บคําสั่ง
+Data -> unlinitalized ไม่กําหนดค่าเริ่มต้น(global)
+ linitalized กําหนดค่าเริ่มตน (global)
+Heap
+Stack -> local+พารามิเตอร
+
+**Local variables**
+- ถูกประกาศไว้ใน block+ตัวแปรพารามิเตอร์
+- เมื่อทํางานเสร็จจะpopออก
+
+**Global variables**
+- อยู่นอกฟังก์ชั่น,เข้าึงผ่านฟังก์ชั่นรวมถึงmain
+- ถ้าตัวแปร local มีชื่อซ้ากับ global แล้วถ้าแก้ข้อมูลในlocal จะไม่ส่งผลกับ global
+
+**Storage class**
+- ที่เก็บตัวแปร ผ่าน auto, register,extern, static เพื่อช่วยกําหนดช่วงข้อมูลของ
+ตัวแปรในmem
+- มี 4 ประเภท เเบ่ง2 แบบ
+1. automatic storage duration เกิดอัตโนมัติ เมื่อเข้าใน block เเต่ถ้าออก 
+block จะไม่อยู่ในmem ใช้ auto , register
+เป็น local ส่วนใหญ่ใช้
+- default ทําให้ autoไม่จําเป็น
+- register ช่วยให้เข้าถึงตัวแปรได้เร็วขึ้น
+2. static storage duration ตัวแปรที่เก็บตั้งเเต่ถูกกันหนดใช้งานเเละจะอยู่ 
+ในmemจนจบ มี extern, static
+- เป็น global กับ ชื่อฟังก์ชั่น ให้เป็น extern
+- ถ้า local ใช้กับ staic จะทําให้มีชีวิตตลอดการใช้งานเเม้จะจบการทํางานเเล้วก็
+ตาม
+
+**Dynamic storage duration**
+- การจองพท.เพื่อให้ข้อมูลอยู่ในmemก่อน
+#
